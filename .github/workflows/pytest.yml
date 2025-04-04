@@ -1,0 +1,31 @@
+name: Run Pytest
+
+on:
+  push:
+    branches:
+      - main  # Runs the action on push to the 'main' branch
+  pull_request:
+    branches:
+      - main  # Runs the action when creating a PR targeting the 'main' branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # You can change this to macos-latest or windows-latest if needed
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checkout the code from the repository
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # Specify the Python version (you can adjust as needed)
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # Assumes you have a requirements.txt with pytest as a dependency
+
+      - name: Run tests
+        run: |
+          pytest  # Runs pytest on the repository
