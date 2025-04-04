@@ -1,3 +1,2 @@
 # exerciceCICD
-Exercice sur le CI CD de github
-test2
+Un simple exercice sur le CICD github action avec pytest et dockerisation
