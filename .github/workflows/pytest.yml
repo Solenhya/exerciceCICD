@@ -41,10 +41,10 @@ jobs:
       
     - name: Build Docker image
       run: |
-      docker build -t my-python-app .
+        docker build -t my-python-app .
       
     - name: Test Docker image
       run: |
-      docker run -d --name test-container my-python-app
-      sleep 10  # Wait briefly to see if container crashes immediately
-      docker stop test-container
+        docker run -d --name test-container my-python-app
+        sleep 10  # Wait briefly to see if container crashes immediately
+        docker stop test-container
