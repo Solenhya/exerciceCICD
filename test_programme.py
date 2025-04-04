@@ -1,4 +1,4 @@
-from programme import addition
+from .programme import addition
 
 
 def testAditionSucces():
