@@ -30,3 +30,21 @@ jobs:
       - name: Run tests
         run: |
           pytest  # Runs pytest on the repository
+
+  
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Build Docker image
+      run: |
+      docker build -t my-python-app .
+      
+    - name: Test Docker image
+      run: |
+      docker run -d --name test-container my-python-app
+      sleep 10  # Wait briefly to see if container crashes immediately
+      docker stop test-container
